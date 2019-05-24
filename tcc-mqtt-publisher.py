@@ -7,7 +7,7 @@ def on_connect(client, userdata, flags, rc):
 	print(f"Connected to server: {rc}")
 
 	# Will resubscribe if the connection is lost
-	client.subscribe("$SYS/#")
+	# client.subscribe("$SYS/#")
 
 
 def main(server_ip : str, server_port : int, keep_alive: int=60):
@@ -24,7 +24,7 @@ def main(server_ip : str, server_port : int, keep_alive: int=60):
 
 	while True:
 		to_send = input("Input something to publish")
-		mqtt_client.publish("$SYS/#", payload=to_send, qos=0)
+		mqtt_client.publish("/testing/things", payload=to_send, qos=0)
 
 
 if __name__ == "__main__":

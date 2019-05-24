@@ -7,7 +7,8 @@ def on_connect(client, userdata, flags, rc):
 	print(f"Connected to server: {rc}")
 
 	# Will resubscribe if the connection is lost
-	client.subscribe("$SYS/#")
+	# client.subscribe("$SYS/#")
+	client.subscribe("/testing/things")
 
 
 # Callback on receiving a PUBLISH from the server
@@ -21,6 +22,7 @@ def main(server_ip : str, server_port : int, keep_alive : int=60):
 	mqtt_client.on_message = on_publish
 
 	def disconnect(s, f):
+		print("Received SIGINT")
 		mqtt_client.disconnect()
 
 	signal(SIGINT, disconnect)
