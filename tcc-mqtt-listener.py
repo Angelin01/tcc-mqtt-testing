@@ -30,4 +30,4 @@ def main(server_ip : str, server_port : int, keep_alive : int=60):
 
 
 if __name__ == "__main__":
-	main("iot.eclipse.org", 1883)
+	main("127.0.0.1", 1883)
