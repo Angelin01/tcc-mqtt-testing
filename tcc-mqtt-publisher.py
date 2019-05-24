@@ -1,4 +1,5 @@
 import paho.mqtt.client as mqtt
+from os import urandom
 from signal import signal, SIGINT
 
 
@@ -23,8 +24,21 @@ def main(server_ip : str, server_port : int, keep_alive: int=60):
 	mqtt_client.loop_start()
 
 	while True:
-		to_send = input("Input something to publish")
-		mqtt_client.publish("/testing/things", payload=to_send, qos=0)
+		bytes_to_send = input("Input the number of bytes to publish\n")
+
+		if bytes_to_send.isdigit():
+			bytes_to_send = int(bytes_to_send)
+			if bytes_to_send > 0:
+				print(f"Sending {bytes_to_send} random bytes")
+				mqtt_client.publish("/testing/things", payload=urandom(bytes_to_send), qos=0)
+			elif bytes_to_send == 0:
+				print("Sending empty message")
+				mqtt_client.publish("/testing/things")
+			else:
+				print("Number of bytes must not be negative")
+		else:
+			print("Invalid number")
+
 
 
 if __name__ == "__main__":
