@@ -24,7 +24,7 @@ def main(server_ip : str, server_port : int, keep_alive: int=60):
 	mqtt_client.loop_start()
 
 	qos_level = None
-	while not qos_level:
+	while qos_level is None:
 		qos_in = input("Input the QoS level for the messages\n0 - Fire and Forget\n1 - Retry until ACK received\n2 - Exactly one copy received\n")
 		if qos_in.isdigit() and 0 <= int(qos_in) <= 2:
 			qos_level = int(qos_in)
