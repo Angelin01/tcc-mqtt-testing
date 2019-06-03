@@ -1,6 +1,7 @@
 import paho.mqtt.client as mqtt
 from os import urandom
 from signal import signal, SIGINT
+from time import sleep
 
 
 # Callback on receiving a CONNACK from the server
@@ -40,6 +41,7 @@ def main(server_ip : str, server_port : int, keep_alive: int=60):
 				print(f"Sending {bytes_to_send} random bytes 100 times")
 				for _ in range(100):
 					mqtt_client.publish("/testing/things", payload=urandom(bytes_to_send), qos=qos_level)
+					sleep(0.1)
 			elif bytes_to_send == 0:
 				print("Sending empty message")
 				mqtt_client.publish("/testing/things")
