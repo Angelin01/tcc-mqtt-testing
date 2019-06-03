@@ -37,8 +37,9 @@ def main(server_ip : str, server_port : int, keep_alive: int=60):
 		if bytes_to_send.isdigit():
 			bytes_to_send = int(bytes_to_send)
 			if bytes_to_send > 0:
-				print(f"Sending {bytes_to_send} random bytes")
-				mqtt_client.publish("/testing/things", payload=urandom(bytes_to_send), qos=qos_level)
+				print(f"Sending {bytes_to_send} random bytes 100 times")
+				for _ in range(100):
+					mqtt_client.publish("/testing/things", payload=urandom(bytes_to_send), qos=qos_level)
 			elif bytes_to_send == 0:
 				print("Sending empty message")
 				mqtt_client.publish("/testing/things")
@@ -50,4 +51,4 @@ def main(server_ip : str, server_port : int, keep_alive: int=60):
 
 
 if __name__ == "__main__":
-	main("192.168.100.2", 1883)
+	main("192.168.100.2", 1883, 6000)
