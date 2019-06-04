@@ -17,3 +17,14 @@ msg_bytes, qos, sent_bytes
 100, 2, 407
 1000, 2, 1308
 10000, 2, 10488
+
+
+100 msgs with 10 bytes and 10000 bytes
+msg_size, packet_loss, sent_bytes_qos1, sent_bytes_qos2
+10, 5%, 18789, 27389
+10000, 5%, 1088600, 1133308
+10, 10%, 17767, 26371
+10000, 10%, 1935283, 1181716
+10, 15%, 12034, 22131
+10000, 15%, >5808636 (unstable), >3857552 (unstable)
+
