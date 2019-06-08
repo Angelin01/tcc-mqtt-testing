@@ -31,7 +31,11 @@ Tests with packets loss were performed by using iptables' statistic module and d
 `INPUT` and `OUTPUT`. For this case, QoS 0 was ignored, as it would not affect results aside from some messages
 failing to arrive. To avoid chances, 100 messages were sent on each attempt, with a 0.1 second delay between each one, 
 one set with only 10 bytes each and another set with 10000 bytes each, as to break the message into multiple packets. 
-The message sizes are in the tables below.
+
+
+### Results by total bytes transmitted
+
+The tables below show the total bytes transmitted.
 
 <table>
 <tr><th>10 bytes messages</th><th>1000 bytes messages</th><th>10000 bytes messages</th></tr>
@@ -61,6 +65,39 @@ The message sizes are in the tables below.
 | 15% | unstable| unstable|
 
 </td></tr> </table>
+
+### Results by total packets transmitted
+
+<table>
+<tr><th>10 bytes messages</th><th>1000 bytes messages</th><th>10000 bytes messages</th></tr>
+<tr><td>
+
+|Packet Loss| Packets QoS 1 | Packets QoS 2|
+|:---:|:---:|:---:|
+| 5%  | 272 | 413 |
+| 10% | 248 | 367 |
+| 15% | 211 | 260 |
+
+</td>
+<td>
+
+|Packet Loss| Packets QoS 1 | Packets QoS 2|
+|:---:|:---:|:---:|
+| 5%  | 410 | 447 |
+| 10% | 446 | 408 |
+| 15% | 264 | 350 |
+
+</td><td>
+
+|Packet Loss| Packets QoS 1 | Packets QoS 2|
+|:---:|:---:|:---:|
+| 5%  | 862 | 1042 |
+| 10% | 1046 | 1089 |
+| 15% | unstable| unstable|
+
+</td></tr> </table>
+
+---
 
 It must be noted that during the testing, QoS 1 many times flooded the network before receiving an answer. Using
 QoS 1 and 15% packet loss turned the network unusable, as it was flooded with duplicate packets, and the tests were
