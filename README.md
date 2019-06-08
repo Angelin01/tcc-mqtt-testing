@@ -34,7 +34,7 @@ one set with only 10 bytes each and another set with 10000 bytes each, as to bre
 The message sizes are in the tables below.
 
 <table>
-<tr><th>10 bytes messages</th><th>10000 bytes messages</th></tr>
+<tr><th>10 bytes messages</th><th>1000 bytes messages</th><th>10000 bytes messages</th></tr>
 <tr><td>
 
 |Packet Loss| Size QoS 1 | Size QoS 2|
@@ -42,6 +42,15 @@ The message sizes are in the tables below.
 | 5%  | 18789 | 27389 |
 | 10% | 17767 | 26371 |
 | 15% | 12034 | 22131 |
+
+</td>
+<td>
+
+|Packet Loss| Size QoS 1 | Size QoS 2|
+|:---:|:---:|:---:|
+| 5%  | 130052 | 141294 |
+| 10% | 145550 | 151910 |
+| 15% | 146054 | 153051 |
 
 </td><td>
 
