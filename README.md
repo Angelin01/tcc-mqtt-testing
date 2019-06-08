@@ -99,6 +99,14 @@ The tables below show the total bytes transmitted.
 
 ---
 
+The results from the tables above are displayed below in graphs for better viewing.
+
+![Graph of number of bytes and packets transmitted by packet loss for 10b messages](./bytes_packets-packet_loss-10b.png)
+
+![Graph of number of bytes and packets transmitted by packet loss for 1000b messages](./bytes_packets-packet_loss-1000b.png)
+
+![Graph of number of bytes and packets transmitted by packet loss for 10000b messages](./bytes_packets-packet_loss-10000b.png)
+
 It must be noted that during the testing, QoS 1 many times flooded the network before receiving an answer. Using
 QoS 1 and 15% packet loss turned the network unusable, as it was flooded with duplicate packets, and the tests were
 interrupted as it was clear they were not stopping even after 20 minutes. Likewise, using QoS 2 with 15% packet loss
