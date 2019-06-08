@@ -30,7 +30,7 @@ It should be noted that with QoS 1 and 2 additional bytes would be transmitted i
 Tests with packets loss were performed by using iptables' statistic module and dropping packets randomly, both on
 `INPUT` and `OUTPUT`. For this case, QoS 0 was ignored, as it would not affect results aside from some messages
 failing to arrive. To avoid chances, 100 messages were sent on each attempt, with a 0.1 second delay between each one, 
-one set with only 10 bytes each and another set with 10000 bytes each, as to break the message into multiple packets. 
+in sets of 10, 1000 and 10000 bytes each, as to break the message into multiple packets. 
 
 
 ### Results by total bytes transmitted
