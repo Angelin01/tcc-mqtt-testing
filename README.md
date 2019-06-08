@@ -12,15 +12,13 @@ the broker and client are in the table below. All sizes are in bytes.
 
 | Message Size | Size QoS 0 | Size QoS 1 | Size QoS 2 |
 |:---:|:---:|:---:|:---:|
-| 0     | 133   | 133   | 133   |
+| 0     | 133   | 189   | 307   |
 | 1     | 134   | 190   | 308   |
 | 10    | 143   | 199   | 317   |
 | 100   | 233   | 289   | 407   |
 | 1000  | 1134  | 1190  | 1308  |
 | 10000 | 10314 | 10370 | 10488 |
 
-Apparently, empty messages will always send out a minimum of 133 (do note this includes the name of the topic,
-which can vary and adds overhead).  
 With QoS 0, the increase in bytes sent is exactly the size of the message sent.  
 With QoS 1, there was an increase in how many bytes were transmitted due to the necessity of the ACK from the broker.  
 With QoS 2, there was a large increase due to the necessary handshake between broker and client.
@@ -51,11 +49,11 @@ The message sizes are in the tables below.
 |:---:|:---:|:---:|
 | 5%  | 1088600 | 1133308 |
 | 10% | 1935283 | 1181716 |
-| 15% |\>5808636|\>3857552|
+| 15% | unstable| unstable|
 
 </td></tr> </table>
 
-It must be noted that during the testing, QoS 1 many times flooded the network before receiving and answer. Using
+It must be noted that during the testing, QoS 1 many times flooded the network before receiving an answer. Using
 QoS 1 and 15% packet loss turned the network unusable, as it was flooded with duplicate packets, and the tests were
 interrupted as it was clear they were not stopping even after 20 minutes. Likewise, using QoS 2 with 15% packet loss
 also resulted in a test that did not stop due to the amount of error handling, however it should be noted it never 

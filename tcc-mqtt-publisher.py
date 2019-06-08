@@ -44,7 +44,7 @@ def main(server_ip : str, server_port : int, keep_alive: int=60):
 					sleep(0.1)
 			elif bytes_to_send == 0:
 				print("Sending empty message")
-				mqtt_client.publish("/testing/things")
+				mqtt_client.publish("/testing/things", qos=qos_level)
 			else:
 				print("Number of bytes must not be negative")
 		else:
